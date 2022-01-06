@@ -138,6 +138,14 @@ async function run() {
       res.json(result);
     });
 
+    //payment ar jonno...
+    app.get("/appointments/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) };
+      const result = await ordersCollection.findOne(query);
+      res.json(result);
+    });
+
     //post review data
 
     app.post("/review", async (req, res) => {
@@ -209,9 +217,9 @@ async function run() {
 run().catch(console.error);
 
 app.get("/", (req, res) => {
-  res.send("online ecommerce shop");
+  res.send("online ecommerce shop for project");
 });
 
 app.listen(port, () => {
-  console.log(`listening port: ${port}`);
+  console.log(`listening from port: ${port}`);
 });
